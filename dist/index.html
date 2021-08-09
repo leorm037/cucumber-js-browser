@@ -9,29 +9,35 @@
 
     <pre><code id="feature">
         
-Feature: Converter decimal em romanos
-    Como um escritor de livros científicos
-    Quero converter números decimais e romanos
-    Para que a numeração dos títulos dos meus livros sejam representados em romanos
-
-    Scenario: decimal 1 em romano
-        Given que o capitulo do livro seja 1 
-        When converter para romano 
-        Then o resuldado sera 'I'
-    
-    Scenario Outline: decimal para romano
-        Given que o capitulo do livro seja [decimal]
-        When converter para romano 
-        Then o resuldado sera [romano]
+        #language:pt
+        Funcionalidade: Converter decimal em romanos
+            Como um escritor de livros científicos
+            Quero converter números decimais e romanos
+            Para que a numeração dos títulos dos meus livros sejam representados em romanos
         
-      Examples:
-        | decimal | romano |
-        |       1 |    "I" |
-        |       2 |   "II" |
-        |       3 |  "III" |
-        |       4 |   "IV" |
-        |       5 |    "V" |
-        |       6 |   "VI" |
+            Cenário: decimal 1 em romano
+                Dado que o capitulo do livro seja 1
+                Quando converter para romano
+                Então o resuldado sera 'I'
+                
+            Cenário: decimal 2 em romano
+                Dado que o capitulo do livro seja 1
+                Quando converter para romano
+                Então o resuldado sera 'II'
+        
+            Esquema do Cenário: decimal para romano
+                Dado que o capitulo do livro seja [decimal]
+                Quando converter para romano
+                Então o resuldado sera [romano]
+        
+              Cenário:
+                | decimal | romano |
+                |       1 |    "I" |
+                |       2 |   "II" |
+                |       3 |  "III" |
+                |       4 |   "IV" |
+                |       5 |    "V" |
+                |       6 |   "VI" |
     
     </code></pre>
 
