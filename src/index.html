@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Converter número decimal em romanos</title>
+</head>
+
+<body>
+
+    <pre><code id="feature">
+        
+Feature: Converter decimal em romanos
+    Como um escritor de livros científicos
+    Quero converter números decimais e romanos
+    Para que a numeração dos títulos dos meus livros sejam representados em romanos
+
+    Scenario: decimal 1 em romano
+        Given que o capitulo do livro seja 1 
+        When converter para romano 
+        Then o resuldado sera 'I'
+    
+    Scenario Outline: decimal para romano
+        Given que o capitulo do livro seja [decimal]
+        When converter para romano 
+        Then o resuldado sera [romano]
+        
+      Examples:
+        | decimal | romano |
+        |       1 |    "I" |
+        |       2 |   "II" |
+        |       3 |  "III" |
+        |       4 |   "IV" |
+        |       5 |    "V" |
+        |       6 |   "VI" |
+    
+    </code></pre>
+
+    <pre><code id="output"></code></pre>
+    <div id="message"></div>
+
+    <script>
+
+        // APP //
+        var CustomWorld = function() {
+            this.decimal = 0;
+            this.romano = "";
+        };
+
+        CustomWorld.prototype.converter = function(decimal) {
+            return "I";
+        };
+    </script>
+
+    <script id="steps">
+        ///// Step definitions /////
+        var setWorldConstructor = Cucumber.setWorldConstructor;
+
+        setWorldConstructor(CustomWorld);
+
+        var Given = Cucumber.Given;
+        var When = Cucumber.When;
+        var Then = Cucumber.Then;
+        var expect = chai.expect;
+
+        Given('que o capitulo do livro seja {int}', function(number) {
+            this.decimal = number;
+        });        
+
+        When('converter para romano', function () {
+            this.romano = this.converter(this.decimal);
+         });
+
+        Then('o resuldado sera {string}', function(romano) {
+            expect(this.romano).to.eql(romano);
+        });        
+    </script>
+    <script type="text/javascript" src="all.js"></script>
+
+</body>
+
+</html>
